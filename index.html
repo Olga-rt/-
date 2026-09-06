@@ -1,1167 +1,557 @@
-<!DOCTYPE html>
 <html lang="ru" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Кофейня «Тёплый круг» в Берёзовском | Тот самый вкус и то самое тепло</title>
-  <meta name="description" content="Уютная семейная кофейня «Тёплый круг» в Берёзовском. Правильный спешелти-кофе, домашние сырники, сытные обеды и безопасный детский уголок. Ждём в гости всей семьёй!">
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Swiper.js CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            cream: '#FCF8F2',
-            'cream-soft': '#F6EDE2',
-            'warm-sand': '#EEDDC9',
-            'coffee-dark': '#342319',
-            'coffee-medium': '#5A3E2D',
-            'coffee-accent': '#C27A45',
-            'coffee-light': '#DF9B63',
-            'warm-terracotta': '#D96B43',
-            'forest-subtle': '#4A6B53',
-            'accent-gold': '#E5A93C'
-          },
-          fontFamily: {
-            heading: ['Comfortaa', 'cursive', 'sans-serif'],
-            sans: ['Nunito', 'sans-serif']
-          },
-          boxShadow: {
-            'cozy': '0 10px 30px -5px rgba(52, 35, 25, 0.08), 0 4px 12px -2px rgba(52, 35, 25, 0.04)',
-            'cozy-hover': '0 20px 35px -5px rgba(52, 35, 25, 0.15), 0 8px 16px -4px rgba(194, 122, 69, 0.2)'
-          }
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Кофейня «Тёплый круг» в Берёзовском | Тот самый вкус и то самое тепло</title>
+<meta name="description" content="Уютная семейная кофейня «Тёплый круг» в Берёзовском. Правильный спешелти-кофе, домашние сырники, сытные обеды и безопасный детский уголок. Ждём в гости всей семьёй!" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cream: '#FCF8F2',
+        'cream-soft': '#F6EDE2',
+        'warm-sand': '#EEDDC9',
+        'coffee-dark': '#342319',
+        'coffee-medium': '#5A3E2D',
+        'coffee-accent': '#C27A45',
+        'coffee-light': '#DF9B63',
+        'warm-terracotta': '#D96B43',
+        'forest-subtle': '#4A6B53',
+        'accent-gold': '#E5A93C'
+      },
+      fontFamily: {
+        heading: ['Comfortaa', 'cursive', 'sans-serif'],
+        sans: ['Nunito', 'sans-serif']
+      },
+      boxShadow: {
+        'cozy': '0 10px 30px -5px rgba(52, 35, 25, 0.08), 0 4px 12px -2px rgba(52, 35, 25, 0.04)',
+        'cozy-hover': '0 20px 35px -5px rgba(52, 35, 25, 0.15), 0 8px 16px -4px rgba(194, 122, 69, 0.2)'
       }
     }
-  </script>
+  }
+}
+</script>
 
-  <style>
-    /* Custom Utilities & Animations */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal-on-scroll.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
+<style>
+/* Custom Utilities & Animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-on-scroll.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .nav-blur {
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
+.nav-blur {
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+}
 
-    .tab-btn.active {
-      background-color: #342319;
-      color: #FCF8F2;
-      box-shadow: 0 4px 15px rgba(52, 35, 25, 0.18);
-    }
+.tab-btn.active {
+  background-color: #342319;
+  color: #FCF8F2;
+  box-shadow: 0 4px 15px rgba(52, 35, 25, 0.18);
+}
 
-    .tab-pane {
-      display: none;
-      animation: tabFade 0.4s ease forwards;
-    }
-    .tab-pane.active {
-      display: grid;
-    }
+.tab-pane {
+  display: none;
+  animation: tabFade 0.4s ease forwards;
+}
+.tab-pane.active {
+  display: grid;
+}
 
-    @keyframes tabFade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+@keyframes tabFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    .swiper-pagination-bullet {
-      width: 10px;
-      height: 10px;
-      background: #C27A45;
-      opacity: 0.35;
-      transition: all 0.3s ease;
-    }
-    .swiper-pagination-bullet-active {
-      width: 26px;
-      border-radius: 9999px;
-      opacity: 1;
-      background: #342319;
-    }
+@keyframes riseSteam {
+  0% { transform: translateY(0) scaleX(1); opacity: 0.75; }
+  40% { opacity: 0.45; }
+  60% { transform: translateY(-10px) scaleX(1.1); opacity: 0.25; }
+  100% { transform: translateY(-18px) scaleX(0.9); opacity: 0; }
+}
 
-    /* Custom Steam Animation on Hero Coffee */
-    @keyframes riseSteam {
-      0% { transform: translateY(0) scaleX(1); opacity: 0.7; }
-      50% { transform: translateY(-8px) scaleX(1.15); opacity: 0.35; }
-      100% { transform: translateY(-16px) scaleX(0.9); opacity: 0; }
-    }
-    .steam-bubble {
-      animation: riseSteam 2.8s infinite ease-out;
-    }
-  </style>
+.steam-bubble {
+  animation: riseSteam 3s infinite ease-out;
+  animation-delay: var(--delay, 0s);
+}
+
+.hero-gradient {
+  background: linear-gradient(180deg, rgba(52,35,25,0.15) 0%, rgba(52,35,25,0.55) 70%, rgba(52,35,25,0.75) 100%);
+}
+</style>
 </head>
+
 <body class="bg-cream text-coffee-dark font-sans selection:bg-coffee-accent selection:text-white antialiased overflow-x-hidden">
 
-  <!-- ================= НАВИГАЦИЯ ================= -->
-  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div id="nav-container" class="flex items-center justify-between rounded-full px-5 sm:px-7 py-3 transition-all duration-300 bg-cream/80 nav-blur border border-warm-sand/50 shadow-sm">
-        
-        <!-- Логотип -->
-        <a href="#home" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-full bg-coffee-dark flex items-center justify-center text-warm-sand transition-transform group-hover:scale-105 duration-300">
-            <!-- Чашка с паром SVG -->
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-              <path d="M2 19h18a1 1 0 0 0 1-1v-1H1v1a1 1 0 0 0 1 1zm18-12h-2V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a4 4 0 0 0 4 4h7a4 4 0 0 0 4-4v-1h1a3 3 0 0 0 3-3V9a2 2 0 0 0-3-2zm-5 7a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6h9v8zm4-3a1 1 0 0 1-1 1h-1V9h1a1 1 0 0 1 1 1v2z"/>
-            </svg>
-          </div>
-          <div>
-            <span class="font-heading font-bold text-lg sm:text-xl text-coffee-dark tracking-tight block leading-tight">Тёплый круг</span>
-            <span class="text-[10px] text-coffee-medium tracking-wider uppercase font-semibold">Берёзовский</span>
-          </div>
-        </a>
-
-        <!-- Меню (десктоп) -->
-        <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-coffee-medium">
-          <a href="#home" class="hover:text-coffee-accent transition-colors">Главная</a>
-          <a href="#menu" class="hover:text-coffee-accent transition-colors">Наше меню</a>
-          <a href="#about" class="hover:text-coffee-accent transition-colors">О нас</a>
-          <a href="#events" class="hover:text-coffee-accent transition-colors">События и акции</a>
-          <a href="#reviews" class="hover:text-coffee-accent transition-colors">Отзывы</a>
-          <a href="#contacts" class="hover:text-coffee-accent transition-colors">Контакты</a>
-        </nav>
-
-        <!-- CTA и Телефон -->
-        <div class="hidden lg:flex items-center gap-4">
-          <a href="tel:+79995551234" class="text-xs font-bold text-coffee-dark hover:text-coffee-accent flex items-center gap-1.5 transition-colors">
-            <svg class="w-3.5 h-3.5 text-coffee-accent" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"/>
-            </svg>
-            +7 (999) 555-12-34
-          </a>
-          <a href="#contacts" class="px-4 py-2 rounded-full bg-coffee-dark hover:bg-coffee-accent text-cream text-xs font-bold transition-all transform hover:-translate-y-0.5">
-            Заглянуть в гости
-          </a>
-        </div>
-
-        <!-- Кнопка мобильного меню -->
-        <button id="mobile-toggle" aria-label="Открыть меню" class="md:hidden p-2 rounded-lg text-coffee-dark hover:bg-warm-sand/40 focus:outline-none">
-          <svg id="burger-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-          <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-
-      </div>
-    </div>
-
-    <!-- Мобильное выпадающее меню -->
-    <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto px-4 mt-2">
-      <div class="bg-cream border border-warm-sand/80 shadow-cozy-hover rounded-3xl p-6 flex flex-col gap-4 font-semibold text-coffee-dark text-base">
-        <a href="#home" class="mobile-link py-2 border-b border-warm-sand/30 hover:text-coffee-accent">Главная</a>
-        <a href="#menu" class="mobile-link py-2 border-b border-warm-sand/30 hover:text-coffee-accent">Наше меню</a>
-        <a href="#about" class="mobile-link py-2 border-b border-warm-sand/30 hover:text-coffee-accent">О нас</a>
-        <a href="#events" class="mobile-link py-2 border-b border-warm-sand/30 hover:text-coffee-accent">События и акции</a>
-        <a href="#reviews" class="mobile-link py-2 border-b border-warm-sand/30 hover:text-coffee-accent">Отзывы гостей</a>
-        <a href="#contacts" class="mobile-link py-2 hover:text-coffee-accent">Как добраться</a>
-        
-        <div class="pt-3 border-t border-warm-sand flex flex-col gap-3">
-          <div class="text-xs text-coffee-medium flex items-center gap-2">
-            <span class="w-2.5 h-2.5 rounded-full bg-forest-subtle"></span> Берёзовский, ул. Театральная, 14
-          </div>
-          <a href="tel:+79995551234" class="text-sm font-bold text-coffee-accent">+7 (999) 555-12-34</a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- ================= БЛОК 1: ПЕРВЫЙ ЭКРАН (HERO) ================= -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <!-- Фоновое «живое» изображение с мягким теплым оверлеем -->
-      <div class="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=2000&q=80" 
-          alt="Улыбающийся бариста готовит кофе в уютной атмосфере" 
-          class="w-full h-full object-cover object-center scale-105 transform motion-safe:animate-[pulse_10s_ease-in-out_infinite]"
-        />
-        <!-- Градиент для тепла и читаемости -->
-        <div class="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/85 to-cream/70 sm:to-transparent"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-cream via-transparent to-cream/40"></div>
-      </div>
-
-      <!-- Контент первого экрана -->
-      <div class="relative z-10 max-w-4xl mx-auto text-center mt-6 sm:mt-12">
-        <!-- Бэйдж УТП -->
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-warm-sand/70 backdrop-blur-sm border border-coffee-accent/30 text-coffee-dark text-xs sm:text-sm font-bold tracking-wide mb-6 reveal-on-scroll">
-          <span class="w-2 h-2 rounded-full bg-coffee-accent animate-ping"></span>
-          Тот самый вкус и то самое тепло в Берёзовском
-        </div>
-
-        <h1 class="font-heading font-bold text-3xl sm:text-5xl md:text-6xl text-coffee-dark leading-[1.15] mb-6 tracking-tight reveal-on-scroll">
-          Кофейня «Тёплый круг».<br class="hidden sm:inline" />
-          <span class="text-coffee-accent">Место, куда хочется</span> вернуться
-        </h1>
-
-        <p class="text-base sm:text-xl md:text-2xl text-coffee-medium max-w-2xl mx-auto font-normal leading-relaxed mb-10 reveal-on-scroll">
-          Правильный спешелти-кофе, сырники как у мамы и уютный детский уголок, который спасёт ваши выходные.
-        </p>
-
-        <!-- Большая CTA-кнопка -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal-on-scroll">
-          <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-coffee-dark hover:bg-coffee-accent text-cream font-bold text-base sm:text-lg shadow-cozy-hover hover:scale-105 active:scale-95 transition-all duration-300 group">
-            <span>Узнать наше меню</span>
-            <svg class="w-5 h-5 transform group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </a>
-          <a href="#about" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-white/70 hover:bg-white text-coffee-dark font-bold text-base border border-warm-sand transition-all">
-            Наша история
-          </a>
-        </div>
-
-        <!-- Преимущества в цифрах/фактах -->
-        <div class="mt-14 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 pt-8 border-t border-warm-sand/60 reveal-on-scroll">
-          <div class="text-center p-3 rounded-2xl bg-white/40 backdrop-blur-sm">
-            <span class="block font-heading font-bold text-xl sm:text-2xl text-coffee-dark">100% Арабика</span>
-            <span class="text-xs text-coffee-medium font-semibold">Свежая обжарка</span>
-          </div>
-          <div class="text-center p-3 rounded-2xl bg-white/40 backdrop-blur-sm">
-            <span class="block font-heading font-bold text-xl sm:text-2xl text-coffee-dark">с 07:30</span>
-            <span class="text-xs text-coffee-medium font-semibold">Горячий завтрак в будни</span>
-          </div>
-          <div class="text-center p-3 rounded-2xl bg-white/40 backdrop-blur-sm">
-            <span class="block font-heading font-bold text-xl sm:text-2xl text-coffee-dark">Детский уголок</span>
-            <span class="text-xs text-coffee-medium font-semibold">Игры, книги, раскраски</span>
-          </div>
-          <div class="text-center p-3 rounded-2xl bg-white/40 backdrop-blur-sm">
-            <span class="block font-heading font-bold text-xl sm:text-2xl text-coffee-dark">Pet-friendly</span>
-            <span class="text-xs text-coffee-medium font-semibold">Рады воспитанным хвостикам</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= БЛОК 2: МЕНЮ ================= -->
-    <section id="menu" class="py-20 px-4 sm:px-6 lg:px-8 bg-cream-soft">
-      <div class="max-w-7xl mx-auto">
-        
-        <div class="text-center max-w-3xl mx-auto mb-12 reveal-on-scroll">
-          <span class="text-xs uppercase font-bold tracking-widest text-coffee-accent block mb-2">Честные ингредиенты & тёплые рецепты</span>
-          <h2 class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-coffee-dark mb-4">
-            Что мы готовим с любовью
-          </h2>
-          <p class="text-coffee-medium text-base sm:text-lg">
-            Без заумных слов: просто очень вкусный кофе, щедрые домашние завтраки целый день и полезные радости для малышей.
-          </p>
-
-          <!-- Переключатели вкладок -->
-          <div class="mt-8 inline-flex p-1.5 rounded-full bg-warm-sand/60 border border-warm-sand gap-1.5 shadow-inner">
-            <button class="tab-btn active px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold text-coffee-dark transition-all duration-300" data-tab="tab-coffee">
-              ☕ Наш кофе
-            </button>
-            <button class="tab-btn px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold text-coffee-dark transition-all duration-300" data-tab="tab-food">
-              🍳 Завтраки и обеды
-            </button>
-            <button class="tab-btn px-5 sm:px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold text-coffee-dark transition-all duration-300" data-tab="tab-kids">
-              🧸 Для маленьких гостей
-            </button>
-          </div>
-        </div>
-
-        <!-- ТАБ 1: НАШ КОФЕ -->
-        <div id="tab-coffee" class="tab-pane active grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Карточка 1 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=700&q=80" alt="Капучино с нежной пенкой" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-coffee-dark text-xs font-bold px-3 py-1 rounded-full">Хит утра</span>
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Капучино Сливочный</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">190 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Двойной шот арабики свежей обжарки и шелковистая молочная пенка с нотками карамели.</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>Объем: 250 / 350 мл</span>
-              <span class="text-coffee-accent font-semibold">+ растительное молоко по запросу</span>
-            </div>
-          </div>
-
-          <!-- Карточка 2 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&w=700&q=80" alt="Фирменный раф кофейни" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                <span class="absolute top-3 left-3 bg-accent-gold text-coffee-dark text-xs font-bold px-3 py-1 rounded-full">Фирменный</span>
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Раф «Берёзовская сказка»</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">240 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Взбитые сливки с эспрессо, кедровым молочком и капелькой натурального соснового сиропа.</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>Объем: 300 мл</span>
-              <span class="text-forest-subtle font-semibold">Уральский колорит</span>
-            </div>
-          </div>
-
-          <!-- Карточка 3 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=700&q=80" alt="Фильтр-кофе спешелти" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-coffee-dark text-xs font-bold px-3 py-1 rounded-full">Спешелти</span>
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Батч-брю (Фильтр)</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">160 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Чистый и яркий кофе без горечи. Каждую неделю новый моносорт (Эфиопия, Колумбия или Кения).</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>Объем: 250 мл</span>
-              <span class="text-coffee-accent font-semibold">Быстрая подача</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ТАБ 2: ЗАВТРАКИ И ОБЕДЫ -->
-        <div id="tab-food" class="tab-pane grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Карточка 1 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=700&q=80" alt="Пышные сырники со сметаной и ягодами" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                <span class="absolute top-3 left-3 bg-warm-terracotta text-white text-xs font-bold px-3 py-1 rounded-full">Любимое блюдо</span>
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Сырники «Как у мамы»</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">290 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Из фермерского рассыпчатого творога с каплей ванили. Подаём с домашней сметаной и ягодным кули.</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>Вес: 220 г (3 шт.)</span>
-              <span class="text-coffee-accent font-semibold">Весь день</span>
-            </div>
-          </div>
-
-          <!-- Карточка 2 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=80" alt="Тост с яйцом пашот и авокадо" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Большой тост с лососем</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">360 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Тартин на закваске из нашей печи, слабосолёная форель, творожный сыр с зеленью и яйцо всмятку.</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>Сытный завтрак</span>
-              <span class="text-forest-subtle font-semibold">Полезные жиры</span>
-            </div>
-          </div>
-
-          <!-- Карточка 3 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80" alt="Нежный крем-суп с хрустящими гренками" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                <span class="absolute top-3 left-3 bg-white/90 text-coffee-dark text-xs font-bold px-3 py-1 rounded-full">Обед</span>
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Сливочный тыквенный крем-суп</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">260 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Сладкая запечённая тыква, кокосовые сливки, обжаренные семечки и чесночные сухарики.</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>Порция: 300 мл</span>
-              <span class="text-coffee-accent font-semibold">Согревает в любую погоду</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ТАБ 3: ДЛЯ МАЛЕНЬКИХ ГОСТЕЙ -->
-        <div id="tab-kids" class="tab-pane grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          <!-- Карточка 1 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=700&q=80" alt="Детское какао с маршмеллоу" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                <span class="absolute top-3 left-3 bg-warm-sand text-coffee-dark text-xs font-bold px-3 py-1 rounded-full">Детский фаворит</span>
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Какао «Мишка на облаке»</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">150 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Натуральное молочное какао правильной тёплой температуры с маршмеллоу и забавной мордочкой.</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>Без лишнего сахара</span>
-              <span class="text-warm-terracotta font-bold">Безопасная температура</span>
-            </div>
-          </div>
-
-          <!-- Карточка 2 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=700&q=80" alt="Мини-оладушки с мёдом" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Мини-панкейки с бананом</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">190 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Золотистые блинчики удобного размера, политые натуральным сгущённым молоком или ягодным пюре.</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>Порция: 5 штук</span>
-              <span class="text-coffee-accent font-semibold">Удобно держать ручками</span>
-            </div>
-          </div>
-
-          <!-- Карточка 3 -->
-          <div class="bg-cream rounded-3xl overflow-hidden p-5 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 flex flex-col justify-between border border-warm-sand/40">
-            <div>
-              <div class="relative h-48 rounded-2xl overflow-hidden mb-4">
-                <img src="https://images.unsplash.com/photo-1598214886806-c87b84b7078b?auto=format&fit=crop&w=700&q=80" alt="Имбирное печенье ручной работы" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                <span class="absolute top-3 left-3 bg-white/90 text-coffee-dark text-xs font-bold px-3 py-1 rounded-full">Свежая выпечка</span>
-              </div>
-              <div class="flex justify-between items-start mb-2">
-                <h3 class="font-heading font-bold text-lg text-coffee-dark">Песочное печенье «Зверята»</h3>
-                <span class="font-heading font-bold text-coffee-accent text-lg">90 ₽</span>
-              </div>
-              <p class="text-sm text-coffee-medium mb-3">Только сливочное масло, мука и ваниль. Никаких трансжиров и искусственных красителей.</p>
-            </div>
-            <div class="text-xs text-coffee-medium/80 border-t border-warm-sand/40 pt-2 flex items-center justify-between">
-              <span>В наборе 2 штуки</span>
-              <span class="text-forest-subtle font-semibold">100% натурально</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Кнопка PDF внизу блока -->
-        <div class="mt-14 text-center reveal-on-scroll">
-          <a 
-            href="#contacts" 
-            onclick="openPdfModal(event)" 
-            class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-cream border-2 border-coffee-dark hover:bg-coffee-dark hover:text-cream text-coffee-dark font-bold text-base transition-all duration-300 shadow-cozy group"
-          >
-            <!-- Иконка документа -->
-            <svg class="w-5 h-5 text-coffee-accent group-hover:text-warm-sand transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-            <span>Посмотреть полное PDF-меню с ценами</span>
-          </a>
-          <p class="text-xs text-coffee-medium mt-3">PDF, ~2.4 МБ • Включает сезонные напитки и десертную витрину дня</p>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ================= БЛОК 3: О КОФЕЙНЕ (ДУША МЕСТА) ================= -->
-    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 bg-cream overflow-hidden">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-          
-          <!-- Левая колонка: Текст в трёх абзацах -->
-          <div class="lg:col-span-6 reveal-on-scroll">
-            <span class="text-xs uppercase font-bold tracking-widest text-coffee-accent block mb-2">Знакомство</span>
-            <h2 class="font-heading font-bold text-3xl sm:text-4xl text-coffee-dark mb-6 leading-tight">
-              Наша история в трёх абзацах
-            </h2>
-
-            <!-- Три абзаца эмоциональной истории -->
-            <div class="space-y-5 text-coffee-medium text-base sm:text-lg leading-relaxed">
-              <p>
-                Мы родились и выросли здесь, в Берёзовском. И долгие годы нам искренне не хватало одного простого места: чтобы без долгой дороги в Екатеринбург выпить действительно эталонный капучино, поболтать со знакомыми на тихой улочке или спокойно выдохнуть после рабочего дня. Так в 2021 году родилась мечта о «Тёплом круге».
-              </p>
-              <p>
-                Мы принципиально отказались от безликих пакетированных сиропов и пережаренных зёрен из супермаркета. Зёрна нам обжаривают каждую неделю лучшие уральские ростеры, молоко мы берём у проверенных местных фермеров, а творог для сырников протираем вручную ранним утром. Для нас это не просто бизнес — это угощение для добрых соседей.
-              </p>
-              <p class="font-medium text-coffee-dark bg-warm-sand/40 p-4 rounded-2xl border-l-4 border-coffee-accent">
-                «Тёплый круг» — это место, где мамы могут спокойно допить горячий кофе, пока малыш строит башню в деревянном городке, где школьники делают домашку за чашкой какао, а друзья делятся новостями. Вы дома. Заходите чаще.
-              </p>
-            </div>
-
-            <div class="mt-8 flex items-center gap-6">
-              <div>
-                <p class="font-heading font-bold text-coffee-dark text-lg">Анна и Сергей Кузнецовы</p>
-                <p class="text-xs text-coffee-medium">Основатели кофейни «Тёплый круг»</p>
-              </div>
-              <div class="h-8 w-px bg-warm-sand"></div>
-              <div class="text-xs text-coffee-accent font-bold uppercase tracking-wider">
-                С заботой о каждом госте
-              </div>
-            </div>
-          </div>
-
-          <!-- Правая колонка: Атмосферный коллаж -->
-          <div class="lg:col-span-6 reveal-on-scroll">
-            <div class="grid grid-cols-2 gap-4 relative">
-              
-              <!-- Фото 1 (большое) -->
-              <div class="relative rounded-3xl overflow-hidden shadow-cozy group h-72">
-                <img 
-                  src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80" 
-                  alt="Интерьер кофейни с живыми растениями" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div class="absolute bottom-3 left-3 bg-cream/90 backdrop-blur-sm text-[11px] font-bold px-3 py-1 rounded-full text-coffee-dark">
-                  🌿 Уютные уголки
-                </div>
-              </div>
-
-              <!-- Фото 2 (детский уголок) -->
-              <div class="relative rounded-3xl overflow-hidden shadow-cozy group h-72 translate-y-6">
-                <img 
-                  src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=800&q=80" 
-                  alt="Счастливый ребёнок в детском уголке" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div class="absolute bottom-3 left-3 bg-cream/90 backdrop-blur-sm text-[11px] font-bold px-3 py-1 rounded-full text-coffee-dark">
-                  🎨 Детская зона
-                </div>
-              </div>
-
-              <!-- Фото 3 (свежая выпечка) -->
-              <div class="relative rounded-3xl overflow-hidden shadow-cozy group h-56 -translate-y-4">
-                <img 
-                  src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" 
-                  alt="Свежая домашняя выпечка" 
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div class="absolute bottom-3 left-3 bg-cream/90 backdrop-blur-sm text-[11px] font-bold px-3 py-1 rounded-full text-coffee-dark">
-                  🥐 Выпечка каждое утро
-                </div>
-              </div>
-
-              <!-- Интерактивная плашка-сердечко -->
-              <div class="relative rounded-3xl bg-warm-sand/50 p-6 flex flex-col justify-center items-center text-center border-2 border-dashed border-coffee-accent/40 shadow-cozy h-56 translate-y-2">
-                <div class="w-12 h-12 rounded-full bg-warm-terracotta text-white flex items-center justify-center mb-3 shadow-md">
-                  <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                  </svg>
-                </div>
-                <p class="font-heading font-bold text-coffee-dark text-base">Более 15 000</p>
-                <p class="text-xs text-coffee-medium">улыбок и чашек тепла с первого дня</p>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ================= БЛОК 4: АКЦИИ И СОБЫТИЯ ================= -->
-    <section id="events" class="py-20 px-4 sm:px-6 lg:px-8 bg-cream-soft">
-      <div class="max-w-7xl mx-auto">
-        
-        <div class="text-center max-w-2xl mx-auto mb-14 reveal-on-scroll">
-          <span class="text-xs uppercase font-bold tracking-widest text-coffee-accent block mb-2">Радости каждый день</span>
-          <h2 class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-coffee-dark mb-4">
-            Приятные поводы зайти сегодня
-          </h2>
-          <p class="text-coffee-medium text-base sm:text-lg">
-            Мы любим радовать постоянных гостей и делать наши выходные по-настоящему душевными для всех возрастов.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          <!-- Карточка 1: Программа лояльности -->
-          <div class="bg-cream rounded-3xl p-8 sm:p-10 border border-warm-sand shadow-cozy hover:shadow-cozy-hover transition-all duration-300 relative overflow-hidden flex flex-col justify-between reveal-on-scroll">
-            <div class="absolute -right-8 -bottom-8 w-48 h-48 rounded-full bg-warm-sand/30 pointer-events-none"></div>
-            <div>
-              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-forest-subtle/10 text-forest-subtle text-xs font-bold mb-6">
-                <span>🎁 Карта любимого гостя</span>
-              </div>
-              <h3 class="font-heading font-bold text-2xl sm:text-3xl text-coffee-dark mb-4">
-                Каждый 6-й кофе — в подарок!
-              </h3>
-              <p class="text-coffee-medium text-base mb-6 leading-relaxed">
-                Заглядываете к нам перед работой? Заведите электронную карту в Apple Wallet / Google Pay за 15 секунд прямо у кассы. Копите штампики за любимый кофе и получайте напитки и десерты бесплатно.
-              </p>
-
-              <ul class="space-y-3 mb-8 text-sm text-coffee-dark font-medium">
-                <li class="flex items-center gap-2.5">
-                  <span class="w-5 h-5 rounded-full bg-accent-gold/20 text-accent-gold flex items-center justify-center font-bold text-xs">✓</span>
-                  Скидка 15% на выпечку с собой после 19:30
-                </li>
-                <li class="flex items-center gap-2.5">
-                  <span class="w-5 h-5 rounded-full bg-accent-gold/20 text-accent-gold flex items-center justify-center font-bold text-xs">✓</span>
-                  Подарочный напиток и кусочек пирога в ваш День рождения
-                </li>
-                <li class="flex items-center gap-2.5">
-                  <span class="w-5 h-5 rounded-full bg-accent-gold/20 text-accent-gold flex items-center justify-center font-bold text-xs">✓</span>
-                  Никаких бумажных визиток — всё в смартфоне
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <button onclick="openLoyaltyModal()" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-coffee-dark hover:bg-coffee-accent text-cream font-bold text-sm transition-all shadow-md">
-                Получить карту гостя онлайн
-              </button>
-            </div>
-          </div>
-
-          <!-- Карточка 2: Семейное событие -->
-          <div class="bg-gradient-to-br from-warm-sand/80 to-cream rounded-3xl p-8 sm:p-10 border border-coffee-accent/30 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 relative overflow-hidden flex flex-col justify-between reveal-on-scroll">
-            <div class="absolute -right-10 -top-10 w-44 h-44 rounded-full bg-warm-terracotta/10 pointer-events-none"></div>
-            <div>
-              <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-warm-terracotta/10 text-warm-terracotta text-xs font-bold mb-6">
-                <span>🎨 Каждое воскресенье в 12:00</span>
-              </div>
-              <h3 class="font-heading font-bold text-2xl sm:text-3xl text-coffee-dark mb-4">
-                Семейный день и творческий мастер-класс
-              </h3>
-              <p class="text-coffee-medium text-base mb-6 leading-relaxed">
-                Пока родители неспешно завтракают, читают книгу или общаются за чашкой фильтр-кофе, наш аниматор и кондитер проводят для детей увлекательное занятие: расписываем пряники, лепим из глины или варим детское какао.
-              </p>
-
-              <div class="bg-white/80 rounded-2xl p-4 mb-8 border border-warm-sand flex items-center gap-4">
-                <div class="w-12 h-12 rounded-xl bg-warm-terracotta/20 flex items-center justify-center text-warm-terracotta shrink-0 font-bold">
-                  ВС
-                </div>
-                <div>
-                  <p class="font-heading font-bold text-sm text-coffee-dark">Ближайшее: «Роспись имбирного печенья»</p>
-                  <p class="text-xs text-coffee-medium">Для детей от 4 до 10 лет • Бесплатно при заказе от 500 ₽</p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <a href="#contacts" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-warm-terracotta hover:bg-coffee-dark text-white font-bold text-sm transition-all shadow-md">
-                Забронировать столик на выходные
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ================= БЛОК 5: ГОВОРЯТ НАШИ ГОСТИ ================= -->
-    <section id="reviews" class="py-20 px-4 sm:px-6 lg:px-8 bg-cream">
-      <div class="max-w-7xl mx-auto">
-        
-        <div class="flex flex-col sm:flex-row justify-between items-end mb-12 reveal-on-scroll">
-          <div class="max-w-2xl">
-            <span class="text-xs uppercase font-bold tracking-widest text-coffee-accent block mb-2">Социальное доказательство</span>
-            <h2 class="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-coffee-dark">
-              Нам доверяют
-            </h2>
-            <p class="text-coffee-medium text-base sm:text-lg mt-3">
-              Искренние отзывы жителей Берёзовского и гостей города из Яндекса и 2ГИС (средняя оценка 4.9 из 5).
-            </p>
-          </div>
-
-          <!-- Стрелки слайдера -->
-          <div class="hidden sm:flex items-center gap-3 mt-6 sm:mt-0">
-            <button id="slider-prev" class="w-12 h-12 rounded-full border border-warm-sand bg-cream-soft hover:bg-coffee-dark hover:text-white text-coffee-dark flex items-center justify-center transition-all">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-              </svg>
-            </button>
-            <button id="slider-next" class="w-12 h-12 rounded-full border border-warm-sand bg-cream-soft hover:bg-coffee-dark hover:text-white text-coffee-dark flex items-center justify-center transition-all">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Swiper Контейнер -->
-        <div class="swiper reviews-slider pb-12 reveal-on-scroll">
-          <div class="swiper-wrapper">
-            
-            <!-- Отзыв 1 -->
-            <div class="swiper-slide h-auto">
-              <div class="bg-cream-soft rounded-3xl p-8 border border-warm-sand/60 h-full flex flex-col justify-between shadow-cozy">
-                <div>
-                  <div class="flex items-center gap-1 text-accent-gold mb-4">
-                    ★★★★★
-                  </div>
-                  <p class="text-coffee-dark text-base sm:text-lg italic mb-6 leading-relaxed">
-                    «Наконец-то в Берёзовском появилось место с настоящим спешелти-кофе! Больше не нужно ехать за нормальным флэтом в центр Екб. А сырники с малиновым соусом — просто восторг, нежные и совсем не жирные.»
-                  </p>
-                </div>
-                <div class="flex items-center gap-4 pt-4 border-t border-warm-sand/50">
-                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Елена В." class="w-12 h-12 rounded-full object-cover border border-warm-sand">
-                  <div>
-                    <h4 class="font-heading font-bold text-coffee-dark text-sm">Елена Васильева</h4>
-                    <span class="text-xs text-coffee-medium">Живёт на Театральной • Яндекс Карты</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Отзыв 2 -->
-            <div class="swiper-slide h-auto">
-              <div class="bg-cream-soft rounded-3xl p-8 border border-warm-sand/60 h-full flex flex-col justify-between shadow-cozy">
-                <div>
-                  <div class="flex items-center gap-1 text-accent-gold mb-4">
-                    ★★★★★
-                  </div>
-                  <p class="text-coffee-dark text-base sm:text-lg italic mb-6 leading-relaxed">
-                    «Для родителей с двумя маленькими детьми это настоящее спасение. Детский уголок чистый, безопасный, много деревянных игрушек. Мы с женой успели спокойно позавтракать и поговорить полчаса. Бариста — душки!»
-                  </p>
-                </div>
-                <div class="flex items-center gap-4 pt-4 border-t border-warm-sand/50">
-                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Михаил К." class="w-12 h-12 rounded-full object-cover border border-warm-sand">
-                  <div>
-                    <h4 class="font-heading font-bold text-coffee-dark text-sm">Михаил и Ольга Козловы</h4>
-                    <span class="text-xs text-coffee-medium">Постоянные гости • 2ГИС</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Отзыв 3 -->
-            <div class="swiper-slide h-auto">
-              <div class="bg-cream-soft rounded-3xl p-8 border border-warm-sand/60 h-full flex flex-col justify-between shadow-cozy">
-                <div>
-                  <div class="flex items-center gap-1 text-accent-gold mb-4">
-                    ★★★★★
-                  </div>
-                  <p class="text-coffee-dark text-base sm:text-lg italic mb-6 leading-relaxed">
-                    «Очень тёплая атмосфера, приятная музыка, нет суеты. Часто прихожу сюда с ноутбуком поработать пару часов. Вайфай стабильный, розетки у каждого столика, а фильтр-кофе подливают со скидкой. Спасибо вам!»
-                  </p>
-                </div>
-                <div class="flex items-center gap-4 pt-4 border-t border-warm-sand/50">
-                  <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Дарья" class="w-12 h-12 rounded-full object-cover border border-warm-sand">
-                  <div>
-                    <h4 class="font-heading font-bold text-coffee-dark text-sm">Дарья Смирнова</h4>
-                    <span class="text-xs text-coffee-medium">Дизайнер • Отзыв в Google</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Отзыв 4 -->
-            <div class="swiper-slide h-auto">
-              <div class="bg-cream-soft rounded-3xl p-8 border border-warm-sand/60 h-full flex flex-col justify-between shadow-cozy">
-                <div>
-                  <div class="flex items-center gap-1 text-accent-gold mb-4">
-                    ★★★★★
-                  </div>
-                  <p class="text-coffee-dark text-base sm:text-lg italic mb-6 leading-relaxed">
-                    «Попробуйте кедровый раф — это отвал всего! Очень душевное оформление, персонал здоровается по имени. Чувствуешь себя не клиентом в сетевой забегаловке, а долгожданным гостем.»
-                  </p>
-                </div>
-                <div class="flex items-center gap-4 pt-4 border-t border-warm-sand/50">
-                  <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Артём" class="w-12 h-12 rounded-full object-cover border border-warm-sand">
-                  <div>
-                    <h4 class="font-heading font-bold text-coffee-dark text-sm">Артём Пономарёв</h4>
-                    <span class="text-xs text-coffee-medium">Берёзовский • Яндекс Карты</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <!-- Пагинация -->
-          <div class="swiper-pagination mt-8"></div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ================= БЛОК 6: КАК НАС НАЙТИ (КОНТАКТЫ & ФУТЕР) ================= -->
-    <section id="contacts" class="py-20 px-4 sm:px-6 lg:px-8 bg-coffee-dark text-cream relative overflow-hidden">
+<!-- ================= НАВИГАЦИЯ ================= -->
+<header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="nav-container" class="flex items-center justify-between rounded-full px-5 sm:px-7 py-3 transition-all duration-300 bg-cream/80 nav-blur border border-warm-sand/50 shadow-sm hover:shadow-cozy">
       
-      <!-- Декоративные теплые круги фона -->
-      <div class="absolute top-0 right-0 w-96 h-96 bg-coffee-medium/30 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute bottom-0 left-0 w-96 h-96 bg-coffee-accent/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <div class="max-w-7xl mx-auto relative z-10">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          <!-- Левая колонка: Детали и приглашение -->
-          <div class="lg:col-span-6 reveal-on-scroll">
-            <span class="text-xs uppercase font-bold tracking-widest text-coffee-light block mb-2">Ждём вас на чашечку тепла</span>
-            <h2 class="font-heading font-bold text-3xl sm:text-5xl text-cream mb-8">
-              До встречи!
-            </h2>
-
-            <!-- Контактная сетка -->
-            <div class="space-y-6">
-              
-              <!-- Адрес -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-coffee-accent/40 transition-colors">
-                <div class="w-12 h-12 rounded-xl bg-coffee-accent/20 text-coffee-light flex items-center justify-center shrink-0">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-heading font-bold text-cream text-lg">г. Берёзовский, ул. Театральная, д. 14</h3>
-                  <p class="text-sm text-warm-sand/80 mt-1">Вход со стороны сквера, рядом с фонтаном. Удобная парковка для авто и колясок.</p>
-                </div>
-              </div>
-
-              <!-- Часы работы -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-coffee-accent/40 transition-colors">
-                <div class="w-12 h-12 rounded-xl bg-coffee-accent/20 text-coffee-light flex items-center justify-center shrink-0">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-heading font-bold text-cream text-lg">Режим работы</h3>
-                  <p class="text-sm text-warm-sand/80 mt-1">
-                    Понедельник — Пятница: <strong class="text-cream font-semibold">07:30 — 21:00</strong><br>
-                    Суббота — Воскресенье: <strong class="text-cream font-semibold">08:30 — 22:00</strong>
-                  </p>
-                </div>
-              </div>
-
-              <!-- Телефон и мессенджеры -->
-              <div class="flex items-start gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-coffee-accent/40 transition-colors">
-                <div class="w-12 h-12 rounded-xl bg-coffee-accent/20 text-coffee-light flex items-center justify-center shrink-0">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="font-heading font-bold text-cream text-lg">Свяжитесь с нами</h3>
-                  <a href="tel:+79995551234" class="text-xl font-bold text-coffee-light hover:text-white transition-colors block mt-1">
-                    +7 (999) 555-12-34
-                  </a>
-                  <p class="text-xs text-warm-sand/70 mt-1">Бронь столов, предзаказ кофе с собой и вопросы о мастер-классах</p>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Кнопки навигаторов -->
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a 
-                href="https://yandex.ru/maps" 
-                target="_blank" 
-                rel="noopener"
-                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cream text-coffee-dark font-bold text-xs hover:bg-warm-sand transition-all transform hover:scale-105"
-              >
-                <span>Яндекс Карты</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-              <a 
-                href="https://2gis.ru" 
-                target="_blank" 
-                rel="noopener"
-                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cream text-coffee-dark font-bold text-xs hover:bg-warm-sand transition-all transform hover:scale-105"
-              >
-                <span>2ГИС</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Правая колонка: Форма быстрого бронирования / связи + интерактивная карточка локации -->
-          <div class="lg:col-span-6 reveal-on-scroll">
-            <div class="bg-cream rounded-3xl p-8 sm:p-10 text-coffee-dark shadow-2xl border border-warm-sand">
-              <h3 class="font-heading font-bold text-2xl text-coffee-dark mb-2">
-                Заглянете на кофе?
-              </h3>
-              <p class="text-sm text-coffee-medium mb-6">
-                Напишите нам, чтобы забронировать любимый столик у окна или заказать горячий напиток ко времени.
-              </p>
-
-              <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                <div>
-                  <label class="block text-xs font-bold uppercase tracking-wider text-coffee-dark/80 mb-1.5">Ваше имя</label>
-                  <input 
-                    type="text" 
-                    required 
-                    placeholder="Например, Анна" 
-                    class="w-full px-4 py-3 rounded-2xl bg-cream-soft border border-warm-sand focus:outline-none focus:ring-2 focus:ring-coffee-accent text-sm"
-                  />
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-coffee-dark/80 mb-1.5">Телефон</label>
-                    <input 
-                      type="tel" 
-                      required 
-                      placeholder="+7 (___) ___-__-__" 
-                      class="w-full px-4 py-3 rounded-2xl bg-cream-soft border border-warm-sand focus:outline-none focus:ring-2 focus:ring-coffee-accent text-sm"
-                    />
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-coffee-dark/80 mb-1.5">Время или повод</label>
-                    <select class="w-full px-4 py-3 rounded-2xl bg-cream-soft border border-warm-sand focus:outline-none focus:ring-2 focus:ring-coffee-accent text-sm text-coffee-dark">
-                      <option>Столик на двоих</option>
-                      <option>Семья с детьми (детский уголок)</option>
-                      <option>Предзаказ кофе с собой</option>
-                      <option>Вопрос основателям</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold uppercase tracking-wider text-coffee-dark/80 mb-1.5">Пожелание (по желанию)</label>
-                  <textarea 
-                    rows="2" 
-                    placeholder="Детский стульчик, столик возле розетки..." 
-                    class="w-full px-4 py-2.5 rounded-2xl bg-cream-soft border border-warm-sand focus:outline-none focus:ring-2 focus:ring-coffee-accent text-sm resize-none"
-                  ></textarea>
-                </div>
-
-                <button 
-                  type="submit" 
-                  class="w-full py-4 rounded-2xl bg-coffee-dark hover:bg-coffee-accent text-cream font-bold text-sm tracking-wide transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.99]"
-                >
-                  Отправить заявку
-                </button>
-
-                <p class="text-[11px] text-coffee-medium text-center">
-                  Мы перезвоним или ответим в WhatsApp за 5 минут в рабочее время кофейни.
-                </p>
-              </form>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Нижняя плашка футера -->
-        <div class="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-xs text-warm-sand/60 gap-4">
-          <p>© 2024 Кофейня «Тёплый круг». Город Берёзовский. Все права защищены.</p>
-          <div class="flex items-center gap-6">
-            <span>Центр притяжения нашего города</span>
-            <a href="#home" class="hover:text-cream transition-colors">Наверх ↑</a>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- ================= МОДАЛЬНОЕ ОКНО: PDF МЕНЮ ================= -->
-  <div id="pdf-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-cream rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-warm-sand relative animate-[tabFade_0.3s_ease]">
-      <button onclick="closePdfModal()" class="absolute top-4 right-4 text-coffee-dark/60 hover:text-coffee-dark p-2">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-
-      <div class="text-center">
-        <div class="w-14 h-14 rounded-full bg-warm-sand text-coffee-dark flex items-center justify-center mx-auto mb-4">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+      <!-- Логотип -->
+      <a href="#home" class="flex items-center gap-3 group shrink-0">
+        <div class="w-10 h-10 rounded-full bg-coffee-dark flex items-center justify-center text-warm-sand shadow-md transition-transform group-hover:scale-105 duration-300 relative overflow-hidden">
+          <svg class="w-5 h-5 fill-current relative z-10" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 19h18a1 1 0 0 0 1-1v-1H1v1a1 1 0 0 0 1 1zm18-12h-2V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v9a4 4 0 0 0 4 4h7a4 4 0 0 0 4-4v-1h1a3 3 0 0 0 3-3V9a2 2 0 0 0-3-2zm-5 7a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V6h9v8zm4-3a1 1 0 0 1-1 1h-1V9h1a1 1 0 0 1 1 1v2z"/>
           </svg>
+          <!-- Пар -->
+          <div class="absolute -top-1 left-1/2 -translate-x-1/2">
+            <div class="steam-bubble w-1 h-1 bg-white/70 rounded-full blur-[1px]" style="--delay:0s"></div>
+            <div class="steam-bubble w-1.5 h-1.5 bg-white/50 rounded-full blur-[1px] ml-0.5" style="--delay:0.4s"></div>
+          </div>
         </div>
-        <h3 class="font-heading font-bold text-2xl text-coffee-dark mb-2">Основное меню 2024</h3>
-        <p class="text-sm text-coffee-medium mb-6">
-          Файл меню подготовлен для быстрой загрузки на смартфон или планшет со всеми десертами и калорийностью.
-        </p>
+        <div class="leading-none">
+          <span class="font-heading font-bold text-lg sm:text-xl text-coffee-dark tracking-tight block">Тёплый круг</span>
+          <span class="text-[10px] text-coffee-medium tracking-widest uppercase font-bold">Берёзовский</span>
+        </div>
+      </a>
 
-        <div class="space-y-3">
-          <button onclick="simulateDownload()" class="w-full py-3.5 rounded-full bg-coffee-dark text-cream font-bold text-sm hover:bg-coffee-accent transition-all flex items-center justify-center gap-2">
-            <span>Скачать PDF (2.4 МБ)</span>
-          </button>
-          <button onclick="closePdfModal()" class="w-full py-3 rounded-full border border-warm-sand text-coffee-dark font-bold text-xs hover:bg-warm-sand/30 transition-all">
-            Закрыть
-          </button>
-        </div>
+      <!-- Десктоп-меню -->
+      <nav class="hidden md:flex items-center gap-7 lg:gap-8 font-bold text-sm text-coffee-medium">
+        <a href="#home" class="hover:text-coffee-accent transition-colors relative after:absolute after:bottom-[-2px] after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-coffee-accent after:transition-all after:duration-300 after:rounded-full">Главная</a>
+        <a href="#menu" class="hover:text-coffee-accent transition-colors">Наше меню</a>
+        <a href="#about" class="hover:text-coffee-accent transition-colors">О нас</a>
+        <a href="#events" class="hover:text-coffee-accent transition-colors">События</a>
+        <a href="#reviews" class="hover:text-coffee-accent transition-colors">Отзывы</a>
+        <a href="#contacts" class="hover:text-coffee-accent transition-colors">Контакты</a>
+      </nav>
+
+      <!-- Телефон + CTA -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="tel:+79995551234" class="text-xs font-extrabold text-coffee-dark hover:text-coffee-accent flex items-center gap-1.5 transition-colors" aria-label="Позвонить">
+          <svg class="w-3.5 h-3.5 text-coffee-accent" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 4V3z"/>
+          </svg>
+          <span>+7 (999) 555-12-34</span>
+        </a>
+        <a href="#contacts" class="px-5 py-2.5 rounded-full bg-coffee-dark hover:bg-coffee-accent text-cream text-xs font-extrabold transition-all duration-300 shadow-cozy hover:-translate-y-0.5 hover:shadow-cozy-hover">Заглянуть в гости</a>
       </div>
-    </div>
-  </div>
 
-  <!-- ================= МОДАЛЬНОЕ ОКНО: КАРТА ГОСТЯ ================= -->
-  <div id="loyalty-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-cream rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-warm-sand relative">
-      <button onclick="closeLoyaltyModal()" class="absolute top-4 right-4 text-coffee-dark/60 hover:text-coffee-dark p-2">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      <!-- Мобильный переключатель -->
+      <button id="mobile-toggle" aria-label="Открыть меню" aria-expanded="false" class="md:hidden p-2 rounded-xl text-coffee-dark hover:bg-warm-sand/40 focus:outline-none focus:ring-2 focus:ring-coffee-accent/30 transition-colors">
+        <svg id="burger-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
-
-      <div class="text-center">
-        <div class="w-14 h-14 rounded-full bg-accent-gold/20 text-accent-gold flex items-center justify-center mx-auto mb-4 font-bold text-2xl">
-          ★
-        </div>
-        <h3 class="font-heading font-bold text-2xl text-coffee-dark mb-2">Электронная карта гостя</h3>
-        <p class="text-sm text-coffee-medium mb-6">
-          Введите номер телефона — мы отправим ссылку для моментального добавления карты в Apple Wallet или Google Кошелёк.
-        </p>
-
-        <form onsubmit="handleLoyaltySubmit(event)" class="space-y-4">
-          <input 
-            type="tel" 
-            required 
-            placeholder="+7 (999) 000-00-00" 
-            class="w-full px-4 py-3 rounded-2xl bg-cream-soft border border-warm-sand focus:outline-none focus:ring-2 focus:ring-coffee-accent text-sm"
-          />
-          <button type="submit" class="w-full py-3.5 rounded-full bg-coffee-dark text-cream font-bold text-sm hover:bg-coffee-accent transition-all">
-            Выпустить карту
-          </button>
-        </form>
-      </div>
     </div>
   </div>
 
-  <!-- ================= СВЕДЕНИЯ И СКРИПТЫ ================= -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  
-  <script>
-    // 1. Адаптивное Мобильное Меню
-    const mobileBtn = document.getElementById('mobile-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const burgerIcon = document.getElementById('burger-icon');
-    const closeIcon = document.getElementById('close-icon');
+  <!-- Мобильное меню -->
+  <div id="mobile-menu" class="hidden md:hidden max-w-7xl mx-auto px-4 mt-3 transition-all duration-300">
+    <div class="bg-cream/95 nav-blur border border-warm-sand/80 shadow-cozy-hover rounded-3xl p-6 flex flex-col gap-1 font-bold text-coffee-dark text-base backdrop-blur-xl">
+      <a href="#home" class="mobile-link block py-3 border-b border-warm-sand/30 hover:text-coffee-accent transition-colors">Главная</a>
+      <a href="#menu" class="mobile-link block py-3 border-b border-warm-sand/30 hover:text-coffee-accent transition-colors">Наше меню</a>
+      <a href="#about" class="mobile-link block py-3 border-b border-warm-sand/30 hover:text-coffee-accent transition-colors">О нас</a>
+      <a href="#events" class="mobile-link block py-3 border-b border-warm-sand/30 hover:text-coffee-accent transition-colors">События</a>
+      <a href="#reviews" class="mobile-link block py-3 border-b border-warm-sand/30 hover:text-coffee-accent transition-colors">Отзывы</a>
+      <a href="#contacts" class="mobile-link block py-3 hover:text-coffee-accent transition-colors">Контакты</a>
+      <a href="tel:+79995551234" class="mt-2 text-center px-5 py-3 rounded-full bg-coffee-dark text-cream font-extrabold text-sm hover:bg-coffee-accent transition-colors shadow-cozy">Позвонить нам</a>
+    </div>
+  </div>
+</header>
 
-    mobileBtn.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      if (isOpen) {
-        mobileMenu.classList.add('hidden');
-        burgerIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-      } else {
-        mobileMenu.classList.remove('hidden');
-        burgerIcon.classList.add('hidden');
-        closeIcon.classList.remove('hidden');
+<!-- ================= БЛОК 1: ПЕРВЫЙ ЭКРАН ================= -->
+<section id="home" class="relative min-h-[100dvh] flex items-center justify-center overflow-hidden">
+  <!-- Фон -->
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop" alt="Уютный кофе на столе" class="w-full h-full object-cover object-center" loading="eager" />
+    <div class="hero-gradient absolute inset-0"></div>
+  </div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 sm:px-10 text-center reveal-on-scroll active">
+    <span class="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white/90 text-xs sm:text-sm font-bold tracking-widest uppercase backdrop-blur-sm shadow-sm">Берёзовский · Открыто с 08:00</span>
+    <h1 class="font-heading font-bold text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-white drop-shadow-2xl leading-[1.05] mb-6 tracking-tight">
+      Кофейня <span class="italic font-heading text-coffee-light">«Тёплый круг»</span>.<br />
+      <span class="text-3xl sm:text-4xl md:text-6xl lg:text-7xl opacity-95">Место, куда хочется вернуться</span>
+    </h1>
+    <p class="text-white/90 text-base sm:text-lg md:text-2xl font-medium max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-md">
+      Правильный спешелти-кофе, сырники как у мамы и детский уголок, который спасёт ваши выходные.
+    </p>
+    <a href="#menu" class="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-white text-coffee-dark text-base sm:text-lg font-extrabold shadow-cozy-hover hover:-translate-y-1 hover:bg-cream transition-all duration-300">
+      Узнать наше меню
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+    </a>
+  </div>
+
+  <!-- Декоративная подсветка -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+    <a href="#menu" aria-label="Перейти к меню" class="block w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:border-white/60 transition-colors animate-bounce">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ================= БЛОК 2: МЕНЮ ================= -->
+<section id="menu" class="py-24 sm:py-32 bg-cream relative">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="text-center mb-16 reveal-on-scroll">
+      <h2 class="font-heading font-bold text-3xl sm:text-5xl md:text-6xl text-coffee-dark mb-4 tracking-tight">Что мы готовим <span class="italic text-coffee-accent">с любовью</span></h2>
+      <p class="text-coffee-medium text-base sm:text-lg max-w-xl mx-auto">Без сложных названий. Только понятные блюда, свежие продукты и тот самый вкус, ради которого хочется проснуться пораньше.</p>
+    </div>
+
+    <!-- Карточки -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-on-scroll">
+      <!-- Карточка 1 -->
+      <article class="group bg-white rounded-3xl overflow-hidden shadow-cozy hover:shadow-cozy-hover transition-all duration-300 hover:-translate-y-1">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=2070&auto=format&fit=crop" alt="Спешелти-кофе" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          <div class="absolute top-4 left-4 bg-coffee-dark text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Кофе</div>
+        </div>
+        <div class="p-7">
+          <h3 class="font-heading font-bold text-xl text-coffee-dark mb-2">Спешелти-кофе «Круг»</h3>
+          <p class="text-coffee-medium text-sm mb-4 leading-relaxed">Эфиопия или Бразилия — выбираете вы. Мы готовим только свежие зерна на профессиональном оборудовании.</p>
+          <span class="text-coffee-accent font-extrabold text-lg">от 180 ₽</span>
+        </div>
+      </article>
+
+      <!-- Карточка 2 -->
+      <article class="group bg-white rounded-3xl overflow-hidden shadow-cozy hover:shadow-cozy-hover transition-all duration-300 hover:-translate-y-1">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=2070&auto=format&fit=crop" alt="Домашние сырники" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          <div class="absolute top-4 left-4 bg-warm-terracotta text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Завтрак</div>
+        </div>
+        <div class="p-7">
+          <h3 class="font-heading font-bold text-xl text-coffee-dark mb-2">Сырники как у мамы</h3>
+          <p class="text-coffee-medium text-sm mb-4 leading-relaxed">Пышные, с творогом из местного магазина. Подаем со сметаной или домашним вареньем — как вы любите.</p>
+          <span class="text-coffee-accent font-extrabold text-lg">от 240 ₽</span>
+        </div>
+      </article>
+
+      <!-- Карточка 3 -->
+      <article class="group bg-white rounded-3xl overflow-hidden shadow-cozy hover:shadow-cozy-hover transition-all duration-300 hover:-translate-y-1">
+        <div class="relative h-64 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=2070&auto=format&fit=crop" alt="Сытный обед" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          <div class="absolute top-4 left-4 bg-forest-subtle text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">Обед</div>
+        </div>
+        <div class="p-7">
+          <h3 class="font-heading font-bold text-xl text-coffee-dark mb-2">Сытный обед</h3>
+          <p class="text-coffee-medium text-sm mb-4 leading-relaxed">Горячий суп дня, второе с гарниром и домашний компот. Быстро, вкусно и по-человечески сытно.</p>
+          <span class="text-coffee-accent font-extrabold text-lg">от 350 ₽</span>
+        </div>
+      </article>
+
+      <!-- Карточка 4 -->
+      <article class="group bg-white rounded-3xl overflow-hidden shadow-cozy hover:shadow-cozy-hover transition-all duration-300 hover:-translate-y-1 md:col-span-2 lg:col-span-2">
+        <div class="flex flex-col md:flex-row">
+          <div class="md:w-1/2 h-64 md:h-auto overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1551024601-bec78aea40b2?q=80&w=2070&auto=format&fit=crop" alt="Детский уголок" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+          </div>
+          <div class="md:w-1/2 p-7 flex flex-col justify-center">
+            <div class="inline-block self-start bg-coffee-light text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-md mb-4">Семья</div>
+            <h3 class="font-heading font-bold text-xl text-coffee-dark mb-2">Детский уголок</h3>
+            <p class="text-coffee-medium text-sm mb-4 leading-relaxed">Безопасная зона для детей с игрушками и раскрасками. Вы отдыхаете — они играют. Спокойствие родителей входит в стоимость.</p>
+            <span class="text-coffee-accent font-extrabold text-lg">Бесплатно</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="text-center mt-14 reveal-on-scroll">
+      <a href="#" onclick="alert('Скоро будет доступно для скачивания'); return false;" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border-2 border-coffee-dark text-coffee-dark font-extrabold hover:bg-coffee-dark hover:text-cream transition-all duration-300 shadow-cozy hover:shadow-cozy-hover">
+        Посмотреть полный PDF-меню
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= БЛОК 3: О НАС ================= -->
+<section id="about" class="py-24 sm:py-32 bg-cream-soft relative overflow-hidden">
+  <div class="absolute top-0 right-0 w-96 h-96 bg-coffee-accent/10 rounded-full -translate-y-1/3 translate-x-1/4 blur-3xl pointer-events-none"></div>
+  <div class="max-w-6xl mx-auto px-6 sm:px-10">
+    <div class="text-center mb-14 reveal-on-scroll">
+      <h2 class="font-heading font-bold text-3xl sm:text-5xl md:text-6xl text-coffee-dark mb-4 tracking-tight">Наша история <span class="italic text-coffee-accent">в трёх абзацах</span></h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start reveal-on-scroll">
+      <div class="relative rounded-3xl overflow-hidden shadow-cozy">
+        <img src="https://images.unsplash.com/photo-1524350872106-6ae2b67a7f32?q=80&w=2070&auto=format&fit=crop" alt="Интерьер кофейни" class="w-full h-auto object-cover" loading="lazy" />
+        <div class="absolute bottom-6 left-6 right-6 bg-white/90 nav-blur rounded-2xl p-5 shadow-cozy">
+          <p class="font-heading font-bold text-coffee-dark text-lg">«Это не просто кофейня. Это место, где город дышит»</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-8">
+        <article>
+          <h3 class="font-heading font-bold text-xl text-coffee-dark mb-3 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full bg-coffee-dark text-cream flex items-center justify-center text-sm">1</span>
+            Как всё началось
+          </h3>
+          <p class="text-coffee-medium leading-relaxed">
+            Мы открылись в 2019 году с одной простой мыслью: в Берёзовском должно быть место, куда хочется приходить не ради кофе, а ради самого ощущения. Маленький зал с деревянными столами, запах свежих круассанов и улыбки людей, которые знают ваше имя, — это был наш план с первого дня.
+          </p>
+        </article>
+
+        <article>
+          <h3 class="font-heading font-bold text-xl text-coffee-dark mb-3 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full bg-coffee-dark text-cream flex items-center justify-center text-sm">2</span>
+            Что мы делаем сегодня
+          </h3>
+          <p class="text-coffee-medium leading-relaxed">
+            Сейчас «Тёплый круг» — это центр притяжения города. У нас варят правильный спешелти-кофе, готовят сытные обеды для студентов и офисных работников, а по выходным собираются семьи с детьми. Мы не гоняемся за трендами — мы просто делаем своё дело с теплом.
+          </p>
+        </article>
+
+        <article>
+          <h3 class="font-heading font-bold text-xl text-coffee-dark mb-3 flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full bg-coffee-dark text-cream flex items-center justify-center text-sm">3</span>
+            Почему это важно
+          </h3>
+          <p class="text-coffee-medium leading-relaxed">
+            Мы верим, что хороший день начинается с хорошего завтрака и честного разговора. Мы не используем сложных терминов, потому что хотим, чтобы каждый чувствовал себя здесь как дома. Приходите — и убедитесь сами.
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= БЛОК 4: АКЦИИ ================= -->
+<section id="events" class="py-24 sm:py-32 bg-coffee-dark relative">
+  <div class="absolute inset-0 opacity-[0.06]" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="" />
+  </div>
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
+    <div class="text-center mb-14 reveal-on-scroll">
+      <h2 class="font-heading font-bold text-3xl sm:text-5xl md:text-6xl text-white mb-4 tracking-tight">Приятные поводы <span class="italic text-coffee-light">зайти сегодня</span></h2>
+      <p class="text-white/70 text-base sm:text-lg max-w-xl mx-auto">У нас всегда найдётся что-нибудь особенное — от утренних скидок до вечерних встреч.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 reveal-on-scroll">
+      <!-- Акция 1 -->
+      <div class="bg-cream/5 border border-white/10 rounded-3xl p-8 hover:bg-cream/10 transition-colors backdrop-blur-sm">
+        <div class="w-12 h-12 rounded-2xl bg-coffee-accent text-white flex items-center justify-center mb-6 shadow-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-xl text-white mb-3">Рабочие завтраки</h3>
+        <p class="text-white/80 text-sm leading-relaxed mb-5">Каждое утро с 08:00 до 11:00 — кофе + сырник за 290 ₽. Быстро, сытно и с хорошим настроением перед работой.</p>
+        <span class="inline-block text-coffee-light font-extrabold text-sm">Ежедневно до 11:00</span>
+      </div>
+
+      <!-- Акция 2 -->
+      <div class="bg-cream/5 border border-white/10 rounded-3xl p-8 hover:bg-cream/10 transition-colors backdrop-blur-sm">
+        <div class="w-12 h-12 rounded-2xl bg-warm-terracotta text-white flex items-center justify-center mb-6 shadow-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-xl text-white mb-3">Детское воскресенье</h3>
+        <p class="text-white/80 text-sm leading-relaxed mb-5">Каждое воскресенье с 12:00 до 16:00 — бесплатный мастер-класс для детей. Родители отдыхают, дети творят.</p>
+        <span class="inline-block text-coffee-light font-extrabold text-sm">Каждое воскресенье</span>
+      </div>
+
+      <!-- Акция 3 -->
+      <div class="bg-cream/5 border border-white/10 rounded-3xl p-8 hover:bg-cream/10 transition-colors backdrop-blur-sm">
+        <div class="w-12 h-12 rounded-2xl bg-forest-subtle text-white flex items-center justify-center mb-6 shadow-lg">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+        </div>
+        <h3 class="font-heading font-bold text-xl text-white mb-3">Живая музыка</h3>
+        <p class="text-white/80 text-sm leading-relaxed mb-5">По субботам в 19:00 — акустические концерты местных исполнителей. Уютно, тихо и по-настоящему тепло.</p>
+        <span class="inline-block text-coffee-light font-extrabold text-sm">Каждую субботу</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= БЛОК 5: ОТЗЫВЫ ================= -->
+<section id="reviews" class="py-24 sm:py-32 bg-cream">
+  <div class="max-w-6xl mx-auto px-6 sm:px-10">
+    <div class="text-center mb-14 reveal-on-scroll">
+      <h2 class="font-heading font-bold text-3xl sm:text-5xl md:text-6xl text-coffee-dark mb-4 tracking-tight">Нам <span class="italic text-coffee-accent">доверяют</span></h2>
+      <p class="text-coffee-medium text-base sm:text-lg max-w-xl mx-auto">Не потому что мы просим, а потому что гости сами делятся впечатлениями.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 reveal-on-scroll">
+      <blockquote class="bg-white rounded-3xl p-8 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 hover:-translate-y-1 relative">
+        <div class="text-4xl font-heading text-coffee-accent mb-4 leading-none">«</div>
+        <p class="text-coffee-dark text-sm sm:text-base leading-relaxed mb-6">Здесь действительно тепло. Прихожу с ребёнком почти каждое воскресенье — уголок спасает, а сырники просто прекрасны.</p>
+        <footer class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop" alt="Елена К." class="w-10 h-10 rounded-full object-cover ring-2 ring-warm-sand ring-offset-2" loading="lazy" />
+          <div>
+            <cite class="font-extrabold text-coffee-dark text-sm not-italic">Елена К.</cite>
+            <span class="block text-xs text-coffee-medium">Мама троих детей</span>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="bg-white rounded-3xl p-8 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 hover:-translate-y-1 relative">
+        <div class="text-4xl font-heading text-coffee-accent mb-4 leading-none">«</div>
+        <p class="text-coffee-dark text-sm sm:text-base leading-relaxed mb-6">Лучший кофе в городе, это не преувеличение. Я работаю рядом и захожу каждое утро — всегда доброе слово и отличный вкус.</p>
+        <footer class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop" alt="Андрей М." class="w-10 h-10 rounded-full object-cover ring-2 ring-warm-sand ring-offset-2" loading="lazy" />
+          <div>
+            <cite class="font-extrabold text-coffee-dark text-sm not-italic">Андрей М.</cite>
+            <span class="block text-xs text-coffee-medium">Менеджер проектов</span>
+          </div>
+        </footer>
+      </blockquote>
+
+      <blockquote class="bg-white rounded-3xl p-8 shadow-cozy hover:shadow-cozy-hover transition-all duration-300 hover:-translate-y-1 relative">
+        <div class="text-4xl font-heading text-coffee-accent mb-4 leading-none">«</div>
+        <p class="text-coffee-dark text-sm sm:text-base leading-relaxed mb-6">Приходил с женой на выходных. Тихо, уютно, музыка в субботу — как будто специально для нас сделали этот вечер.</p>
+        <footer class="flex items-center gap-3">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=2070&auto=format&fit=crop" alt="Дмитрий Р." class="w-10 h-10 rounded-full object-cover ring-2 ring-warm-sand ring-offset-2" loading="lazy" />
+          <div>
+            <cite class="font-extrabold text-coffee-dark text-sm not-italic">Дмитрий Р.</cite>
+            <span class="block text-xs text-coffee-medium">Предприниматель</span>
+          </div>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ================= БЛОК 6: ФУТЕР / КОНТАКТЫ ================= -->
+<section id="contacts" class="py-24 sm:py-32 bg-cream-soft border-t border-warm-sand/50">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 reveal-on-scroll">
+      <div>
+        <h2 class="font-heading font-bold text-3xl sm:text-5xl md:text-6xl text-coffee-dark mb-6 tracking-tight">До встречи!</h2>
+        <p class="text-coffee-medium text-base sm:text-lg mb-10 max-w-md leading-relaxed">Мы ждём вас в любое время. Приходите с семьёй, приходите одни — здесь всегда найдётся место для тёплого разговора.</p>
+
+        <div class="space-y-6">
+          <a href="#" onclick="window.open('https://yandex.ru/maps', '_blank'); return false;" class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-warm-sand/50 shadow-cozy hover:shadow-cozy-hover transition-all hover:-translate-y-0.5 group">
+            <div class="w-10 h-10 rounded-xl bg-coffee-dark text-cream flex items-center justify-center shrink-0 shadow-md group-hover:bg-coffee-accent transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0l2.83 2.83z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-extrabold text-coffee-dark text-sm">Адрес</h4>
+              <p class="text-coffee-medium text-sm">г. Берёзовский, ул. Центральная, 14</p>
+            </div>
+          </a>
+
+          <a href="tel:+79995551234" class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-warm-sand/50 shadow-cozy hover:shadow-cozy-hover transition-all hover:-translate-y-0.5 group">
+            <div class="w-10 h-10 rounded-xl bg-coffee-dark text-cream flex items-center justify-center shrink-0 shadow-md group-hover:bg-coffee-accent transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-extrabold text-coffee-dark text-sm">Телефон</h4>
+              <p class="text-coffee-medium text-sm">+7 (999) 555-12-34</p>
+            </div>
+          </a>
+
+          <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-warm-sand/50 shadow-cozy">
+            <div class="w-10 h-10 rounded-xl bg-coffee-dark text-cream flex items-center justify-center shrink-0 shadow-md">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <h4 class="font-extrabold text-coffee-dark text-sm">Часы работы</h4>
+              <p class="text-coffee-medium text-sm">Пн — Пт: 08:00 – 22:00</p>
+              <p class="text-coffee-medium text-sm">Сб — Вс: 09:00 – 23:00</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative rounded-3xl overflow-hidden shadow-cozy h-full min-h-[400px] lg:min-h-[500px]">
+        <iframe
+          title="Карта расположения кофейни Тёплый круг"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.123456789!2d60.123456!3d56.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDA3JzI0LjQiTiA2MMKwMDcnMzQuNCJF!5e0!3m2!1sru!2sru!4v1234567890123!5m2!1sru!2sru"
+          class="w-full h-full min-h-[400px] lg:min-h-[500px] border-0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Футер-бар -->
+<footer class="bg-coffee-dark text-white/60 py-8">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-medium">
+    <div class="flex items-center gap-2">
+      <span class="font-heading font-bold text-white text-sm">Тёплый круг</span>
+      <span>· Берёзовский · 2025</span>
+    </div>
+    <div>
+      Кофейня с заботой. Без сложных терминов.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Мобильное меню
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const burgerIcon = document.getElementById('burger-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  toggleBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    if (isOpen) {
+      mobileMenu.classList.add('hidden');
+      burgerIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    } else {
+      mobileMenu.classList.remove('hidden');
+      burgerIcon.classList.add('hidden');
+      closeIcon.classList.remove('hidden');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+  });
+
+  // Закрытие мобильного меню при клике на ссылку
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      burgerIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Анимация при скролле
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -60px 0px',
+    threshold: 0.1
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
       }
     });
+  }, observerOptions);
 
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        burgerIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
-      });
-    });
+  document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+    revealObserver.observe(el);
+  });
 
-    // 2. Вкладки Меню (Tabs)
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const tabPanes = document.querySelectorAll('.tab-pane');
+  // Навигация: изменение стиля при скролле
+  const header = document.getElementById('header');
+  const navContainer = document.getElementById('nav-container');
+  let lastScroll = 0;
 
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.tab;
-        
-        tabButtons.forEach(b => b.classList.remove('active'));
-        tabPanes.forEach(p => p.classList.remove('active'));
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
 
-        btn.classList.add('active');
-        const activePane = document.getElementById(target);
-        if (activePane) {
-          activePane.classList.add('active');
-        }
-      });
-    });
-
-    // 3. Инициализация Swiper для отзывов
-    const swiper = new Swiper('.reviews-slider', {
-      slidesPerView: 1,
-      spaceBetween: 24,
-      loop: true,
-      autoplay: {
-        delay: 5500,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '#slider-next',
-        prevEl: '#slider-prev',
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 28,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        }
-      }
-    });
-
-    // 4. Плавное появление секций при скролле (Intersection Observer)
-    const reveals = document.querySelectorAll('.reveal-on-scroll');
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      rootMargin: '0px 0px -40px 0px',
-      threshold: 0.1
-    });
-
-    reveals.forEach(el => revealObserver.observe(el));
-
-    // 5. Поведение Навбара при скролле
-    const navContainer = document.getElementById('nav-container');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        navContainer.classList.add('shadow-md', 'bg-cream/95');
-        navContainer.classList.remove('bg-cream/80');
-      } else {
-        navContainer.classList.remove('shadow-md', 'bg-cream/95');
-        navContainer.classList.add('bg-cream/80');
-      }
-    });
-
-    // 6. Модальные окна
-    function openPdfModal(e) {
-      if (e) e.preventDefault();
-      document.getElementById('pdf-modal').classList.remove('hidden');
-    }
-    function closePdfModal() {
-      document.getElementById('pdf-modal').classList.add('hidden');
-    }
-    function simulateDownload() {
-      alert('Загрузка меню «Тёплый круг» начата! Ждём вас в гости.');
-      closePdfModal();
+    if (currentScroll > 80) {
+      navContainer.classList.add('shadow-cozy');
+      navContainer.classList.remove('py-3');
+      navContainer.classList.add('py-2.5');
+    } else {
+      navContainer.classList.remove('shadow-cozy');
+      navContainer.classList.remove('py-2.5');
+      navContainer.classList.add('py-3');
     }
 
-    function openLoyaltyModal() {
-      document.getElementById('loyalty-modal').classList.remove('hidden');
-    }
-    function closeLoyaltyModal() {
-      document.getElementById('loyalty-modal').classList.add('hidden');
-    }
-    function handleLoyaltySubmit(e) {
-      e.preventDefault();
-      alert('Спасибо! Ссылка на выпуск вашей карты гостя отправлена в SMS.');
-      closeLoyaltyModal();
-    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+</script>
 
-    // 7. Обработка отправки формы
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      alert('Спасибо за вашу заявку! Администратор кофейни «Тёплый круг» свяжется с вами в течение нескольких минут.');
-      e.target.reset();
-    }
-  </script>
 </body>
 </html>
